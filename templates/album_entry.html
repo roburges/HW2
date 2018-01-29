@@ -1,0 +1,10 @@
+
+{% block content %}
+	<h1>AlbumEntryForm</h1>
+	<form method="POST" action="http://localhost:5000/album_result">
+		{{ form.hidden_tag() }}
+		<p>{{ form.name.label }}{{ form.name() }}</p>
+		<p>{{ form.likes.label }}{{ form.like() }}</p>
+		{{ form.submit() }}<br>
+	</form>
+{% endblock %}

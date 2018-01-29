@@ -4,6 +4,8 @@
 
 ## This homework has 3 parts, all of which should be completed inside this file (and a little bit inside the /templates directory).
 
+##Robert Burgess
+##SI364
 ## Add view functions and any other necessary code to this Flask application code below so that the routes described in the README exist and render the templates they are supposed to (all templates provided are inside the templates/ directory, where they should stay).
 
 ## As part of the homework, you may also need to add templates (new .html files) to the templates directory.

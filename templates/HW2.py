@@ -53,28 +53,29 @@ def artistform():
 	artist = request.args.get('artist')
 	return render_template('artistform.html', artist = artist)
 
-@app.route('/artistinfo')
+@app.route('/artistinfo', methods=['GET','POST'])
 def artistinfo():
-	url = 'https://itunes.apple.com/search'
-	pardict = {'term': request.args.get('artist'), 'entity': 'musicTrack', 'media': 'music'}
-	retrieve = requests.get(url, params = params_dict)
-    formatting=retrieve.text
-	result = json.loads(formatting)
-	objects = result['results']
-	return render_template('artist_info.html', objects = results)
-
+	if request.method=="GET":
+		artist=request.args.get("artist","")
+		url = "https://itunes.apple.com/search?term="+ artist
+		retrieve = requests.get(url)
+		object = retrieve.json()["results"] 
+		return render_template('artist_info.html', objects = object)
+	else:
+		return "this isn't valid" 
+ 
 @app.route('/artistlinks')
 def artistlink():
 	return render_template('artist_links.html')
 
 @app.route('/specific/song/<artist_name>')
-def song(name):
+def specificsong(name):
 	pardict = {'term': name, 'entity': 'musicTrack', 'media': 'music'}
 	retrieve = requests.get('https://itunes.apple.com/search', params = params_dict)
 	formatting = retrieve.text
 	results = json.loads(formatting)['results']
 	return render_template('specific_artist.html', results = results)
-
+ 
 @app.route('/album_entry')
 def submission():
 	form = AlbumEntryForm()

@@ -87,7 +87,7 @@ def submissiongresults():
 		name = form.name.data
 		likes = form.likes.data
 		return render_template('album_data.html', name = name, likes = likes)
-	return redirect(url_for('entry'))
+	return redirect(url_for('submission'))
 
 if __name__ == '__main__':
     app.run(use_reloader=True,debug=True)

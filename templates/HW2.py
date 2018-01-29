@@ -71,7 +71,7 @@ def artistlink():
 @app.route('/specific/song/<artist_name>')
 def specificsong(name):
 	pardict = {'term': name, 'entity': 'musicTrack', 'media': 'music'}
-	retrieve = requests.get('https://itunes.apple.com/search', params = params_dict)
+	retrieve = requests.get('https://itunes.apple.com/search', params = pardict)
 	formatting = retrieve.text
 	results = json.loads(formatting)['results']
 	return render_template('specific_artist.html', results = results)
